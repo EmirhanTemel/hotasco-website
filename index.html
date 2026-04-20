@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hotasco Group</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;600;700&family=Barlow+Condensed:wght@300;400;600;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --navy:#0D1B2A;
+  --navy2:#111F30;
+  --navy3:#172538;
+  --navy4:#1D2E42;
+  --orange:#E8602A;
+  --orange2:#F07040;
+  --blue-acc:#4A90D9;
+  --green:#4C8C67;
+  --gold:#C89A3D;
+  --white:#FFFFFF;
+  --muted:#7A9BB5;
+  --border:rgba(255,255,255,0.07);
+}
+body{background:var(--navy);color:var(--white);font-family:'Barlow',sans-serif;min-height:100vh;}
+a{color:inherit}
+nav{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 3rem;height:70px;background:var(--navy2);
+  border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;
+}
+.logo-svg{display:flex;align-items:center;gap:0.6rem;cursor:pointer;}
+.logo-svg svg{height:28px;width:auto;}
+.nav-links{display:flex;gap:0;list-style:none;flex-wrap:wrap;}
+.nav-links li a{
+  display:block;padding:0 1.25rem;height:70px;line-height:70px;
+  font-size:0.78rem;font-weight:400;letter-spacing:0.18em;text-transform:uppercase;
+  text-decoration:none;color:var(--muted);transition:color 0.2s,border-bottom 0.2s;
+  border-bottom:2px solid transparent;cursor:pointer;
+}
+.nav-links li a:hover,.nav-links li a.active{color:var(--white);border-bottom-color:var(--orange);}
+.page{display:none;}
+.page.active{display:block;}
+.home-hero{
+  background:linear-gradient(160deg,#0D1B2A 60%,#172030 100%);
+  padding:6rem 3rem 5rem;text-align:center;position:relative;overflow:hidden;
+}
+.home-hero::before{content:'';position:absolute;top:-60px;right:-80px;width:500px;height:500px;border-radius:50%;border:1px solid rgba(232,96,42,0.08);}
+.home-hero::after{content:'';position:absolute;bottom:-100px;left:-100px;width:400px;height:400px;border-radius:50%;border:1px solid rgba(74,144,217,0.07);}
+.hero-tag{display:inline-block;border:1px solid rgba(232,96,42,0.4);color:var(--orange);font-size:0.7rem;letter-spacing:0.35em;text-transform:uppercase;padding:0.4rem 1.2rem;margin-bottom:2.5rem;}
+.hero-h1{font-family:'Barlow Condensed',sans-serif;font-size:clamp(3rem,7vw,5.5rem);font-weight:700;letter-spacing:0.04em;text-transform:uppercase;line-height:1;margin-bottom:1rem;}
+.hero-h1 span{color:var(--orange);}
+.hero-sub{font-size:0.9rem;color:var(--muted);font-weight:300;letter-spacing:0.08em;margin-bottom:3rem;}
+.hero-divider{width:1px;height:60px;background:var(--orange);margin:0 auto;}
+.cards-wrap,.section-wrap,.contact-wrap,.sectors-wrap,.detail-wrap{padding:4rem 2rem 5rem;max-width:1320px;margin:0 auto;}
+.cards-row,.sector-cards,.detail-grid,.contact-grid{display:grid;gap:1px;background:var(--border);}
+.cards-row{grid-template-columns:repeat(3,1fr);align-items:stretch;}
+.sector-cards{grid-template-columns:repeat(3,1fr);margin-top:3rem;}
+.detail-grid{grid-template-columns:1.2fr 0.8fr;margin-top:2.5rem;}
+.contact-grid{grid-template-columns:1fr 1fr;margin-top:3rem;}
+.co-card,.sc,.detail-main,.detail-side,.contact-form,.contact-info-box,.stat-box,.val-box,.sector-tab{
+  background:var(--navy2);position:relative;overflow:hidden;
+}
+.co-card,.sc{padding:3.4rem 2.6rem;cursor:pointer;transition:background 0.3s;min-height:330px;}
+.co-card::before,.sc::before,.sector-tab::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--card-color,var(--orange));
+  transform:scaleX(0);transform-origin:left;transition:transform 0.35s;
+}
+.co-card:hover,.sc:hover,.sector-tab:hover{background:var(--navy3);}
+.co-card:hover::before,.sc:hover::before,.sector-tab:hover::before{transform:scaleX(1);}
+.co-logo{margin-bottom:2.25rem;min-height:56px;display:flex;align-items:flex-start;}
+.co-logo svg,.sc-logo svg{height:44px;width:auto;max-width:100%;}
+.co-label{font-size:0.65rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--card-color,var(--orange));margin-bottom:0.75rem;font-weight:400;}
+.co-desc,.sc-body,.pg-body,.detail-copy,.detail-list li,.ci-val,.val-desc{font-size:0.88rem;color:var(--muted);line-height:1.75;font-weight:300;}
+.co-link{font-size:0.7rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--card-color,var(--orange));display:flex;align-items:center;gap:0.5rem;opacity:0;transition:opacity 0.3s;font-weight:400;margin-top:2rem;}
+.co-card:hover .co-link{opacity:1;}
+.co-link::after{content:'→';}
+.card-global{--card-color:#E8602A;}
+.card-kahve{--card-color:#F07040;}
+.card-kimya{--card-color:#4A90D9;}
+.pg-label{font-size:0.7rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--orange);margin-bottom:1rem;display:flex;align-items:center;gap:0.75rem;}
+.pg-label::before{content:'';display:inline-block;width:24px;height:1px;background:var(--orange);}
+.pg-h2{font-family:'Barlow Condensed',sans-serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:700;text-transform:uppercase;letter-spacing:0.04em;line-height:1.05;margin-bottom:2rem;}
+.pg-h2 span{color:var(--orange);}
+.stats-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);margin:4rem 0;}
+.stat-box{padding:2.5rem 2rem;}
+.stat-n{font-family:'Barlow Condensed',sans-serif;font-size:3.5rem;font-weight:700;color:var(--orange);line-height:1;}
+.stat-l{font-size:0.7rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--muted);margin-top:0.4rem;}
+.values-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);margin-bottom:4rem;}
+.val-box{padding:2rem 2.5rem;}
+.val-num{font-family:'Barlow Condensed',sans-serif;font-size:1.8rem;font-weight:700;color:var(--orange);opacity:0.3;margin-bottom:0.5rem;}
+.val-title{font-size:0.85rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.5rem;}
+.sector-tab-bar{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--border);margin-top:2rem;}
+.sector-tab{padding:1.15rem 1rem;text-align:center;cursor:pointer;transition:background 0.3s;--card-color:var(--orange);}
+.sector-tab span{font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);}
+.sector-tab.active span,.sector-tab:hover span{color:var(--white);}
+.sc-num{font-family:'Barlow Condensed',sans-serif;font-size:4rem;font-weight:700;color:var(--border-col,rgba(232,96,42,0.12));line-height:1;margin-bottom:0.75rem;}
+.sc-logo{margin-bottom:1.25rem;}
+.sc-tags{display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1.5rem;}
+.tag{font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;padding:0.3rem 0.75rem;border:1px solid var(--tc,rgba(232,96,42,0.3));color:var(--tc2,#E8602A);font-weight:400;}
+.sc-global{--card-color:#E8602A;}
+.sc-kahve{--card-color:#F07040;}
+.sc-kimya{--card-color:#4A90D9;}
+.sc-tech{--card-color:#C89A3D;}
+.sc-agri{--card-color:#4C8C67;}
+.sc-global .tag{--tc:rgba(232,96,42,0.3);--tc2:#E8602A;}
+.sc-kahve .tag{--tc:rgba(240,112,64,0.3);--tc2:#F07040;}
+.sc-kimya .tag{--tc:rgba(74,144,217,0.3);--tc2:#4A90D9;}
+.sc-tech .tag{--tc:rgba(200,154,61,0.3);--tc2:#C89A3D;}
+.sc-agri .tag{--tc:rgba(76,140,103,0.3);--tc2:#4C8C67;}
+.detail-main,.detail-side{padding:3rem;}
+.detail-kicker{font-size:0.7rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;}
+.detail-title{font-family:'Barlow Condensed',sans-serif;font-size:clamp(2.4rem,4vw,3.6rem);line-height:1;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:1.2rem;}
+.detail-title span{color:var(--accent);}
+.detail-copy{margin-bottom:1rem;}
+.detail-list{list-style:none;margin-top:1.5rem;display:grid;gap:0.8rem;}
+.detail-list li{padding-left:1.2rem;position:relative;}
+.detail-list li::before{content:'•';position:absolute;left:0;color:var(--accent);}
+.detail-side h3{font-size:0.8rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--muted);margin-bottom:1.2rem;}
+.info-chip{padding:0.85rem 1rem;border:1px solid rgba(255,255,255,0.08);margin-bottom:0.8rem;font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--white);}
+.placeholder-note{margin-top:2rem;padding:1rem 1.1rem;background:rgba(255,255,255,0.03);border-left:2px solid var(--accent);font-size:0.82rem;color:var(--muted);line-height:1.7;}
+.c-group{margin-bottom:1rem;}
+.c-label{font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--muted);margin-bottom:0.4rem;display:block;}
+.c-input{width:100%;background:transparent;border:1px solid rgba(255,255,255,0.08);border-top:none;border-left:none;border-right:none;border-bottom:1px solid rgba(255,255,255,0.15);padding:0.7rem 0;color:var(--white);font-family:'Barlow',sans-serif;font-size:0.88rem;font-weight:300;outline:none;transition:border-color 0.25s;}
+.c-input:focus{border-bottom-color:var(--orange);}
+.c-input::placeholder{color:var(--muted);}
+textarea.c-input{resize:none;height:100px;border:1px solid rgba(255,255,255,0.08);padding:0.75rem;}
+textarea.c-input:focus{border-color:var(--orange);}
+.c-btn{background:var(--orange);border:none;color:var(--white);padding:0.85rem 2.5rem;font-family:'Barlow',sans-serif;font-size:0.72rem;letter-spacing:0.25em;text-transform:uppercase;cursor:pointer;font-weight:600;margin-top:1rem;transition:background 0.25s;}
+.c-btn:hover{background:var(--orange2);}
+.contact-info-box{background:var(--navy3);}
+.ci-item{margin-bottom:2rem;}
+.ci-lbl{font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--orange);margin-bottom:0.4rem;}
+.ci-divider{width:100%;height:1px;background:var(--border);margin:2rem 0;}
+.cc-item{display:flex;align-items:center;gap:0.75rem;margin-bottom:1.2rem;}
+.cc-dot{width:8px;height:8px;border-radius:50%;}
+.cc-name{font-size:0.78rem;color:var(--muted);font-weight:300;letter-spacing:0.1em;}
+footer{text-align:center;padding:2rem 3rem;border-top:1px solid var(--border);font-size:0.68rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--muted);}
+@media (max-width: 1100px){
+  .sector-cards,.sector-tab-bar{grid-template-columns:repeat(2,1fr);}
+  .cards-row,.detail-grid,.contact-grid,.values-grid,.stats-bar{grid-template-columns:1fr;}
+}
+@media (max-width: 720px){
+  nav{padding:0 1.25rem;height:auto;min-height:70px;flex-direction:column;align-items:flex-start;}
+  .nav-links li a{height:48px;line-height:48px;padding:0 0.8rem;}
+  .home-hero,.cards-wrap,.section-wrap,.contact-wrap,.sectors-wrap,.detail-wrap{padding-left:1.25rem;padding-right:1.25rem;}
+  .sector-cards,.sector-tab-bar{grid-template-columns:1fr;}
+}
+
+@media (max-width: 1100px){
+  .cards-row,.sector-cards,.sector-tab-bar{grid-template-columns:repeat(2,1fr);}
+}
+@media (max-width: 720px){
+  nav{padding:0 1rem;height:auto;min-height:70px;flex-wrap:wrap}
+  .nav-links li a{padding:0 .75rem}
+  .cards-row,.sector-cards,.sector-tab-bar,.detail-grid,.contact-grid,.stats-bar,.values-grid{grid-template-columns:1fr;}
+  .co-card,.sc{min-height:auto;}
+}
+
+
+.about-extra{max-width:1100px;margin:0 auto;padding:0 3rem 4rem;}
+.info-sections{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);margin:2.5rem 0 3rem;}
+.info-panel{background:var(--navy2);padding:2.5rem;}
+.info-panel h3{font-family:'Barlow Condensed',sans-serif;font-size:2rem;letter-spacing:0.04em;text-transform:uppercase;margin-bottom:1rem;}
+.info-panel p{font-size:0.9rem;color:var(--muted);line-height:1.8;font-weight:300;}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);margin-bottom:3rem;}
+.why-box{background:var(--navy2);padding:2rem 2.2rem;}
+.why-no{font-family:'Barlow Condensed',sans-serif;font-size:2rem;color:var(--orange);opacity:.35;margin-bottom:.4rem;}
+.why-title{font-size:.85rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.6rem;}
+.why-desc{font-size:.85rem;color:var(--muted);line-height:1.75;font-weight:300;}
+.diagram-wrap{background:var(--navy2);padding:2.5rem;margin-bottom:3rem;border:1px solid var(--border);}
+.diagram-title{font-family:'Barlow Condensed',sans-serif;font-size:2rem;text-transform:uppercase;letter-spacing:.04em;margin-bottom:1.25rem;}
+.diagram-sub{font-size:.88rem;color:var(--muted);line-height:1.8;margin-bottom:2rem;max-width:820px;}
+.org-chart{display:grid;grid-template-columns:1fr;gap:1rem;}
+.org-root{background:var(--navy3);border:1px solid var(--border);padding:1.4rem 1.6rem;text-align:center;}
+.org-root h4,.org-card h4{font-family:'Barlow Condensed',sans-serif;font-size:1.4rem;letter-spacing:.05em;text-transform:uppercase;}
+.org-root p,.org-card p{font-size:.82rem;color:var(--muted);line-height:1.7;margin-top:.45rem;}
+.org-line{width:1px;height:28px;background:var(--orange);margin:0 auto;}
+.org-children{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);}
+.org-card{background:var(--navy3);padding:1.4rem 1.3rem;min-height:150px;}
+@media (max-width: 900px){
+  .info-sections,.why-grid,.org-children{grid-template-columns:1fr;}
+  .about-extra{padding:0 2rem 4rem;}
+}
+
+</style>
+</head>
+<body>
+<svg style="display:none">
+  <symbol id="arrow-mark" viewBox="0 0 36 28">
+    <polyline points="0,0 12,14 0,28" fill="none" stroke="#E8602A" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+    <polyline points="12,0 24,14 12,28" fill="none" stroke="#E8602A" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  </symbol>
+</svg>
+
+<nav>
+  <div class="logo-svg" onclick="goTo('home')">
+    <svg viewBox="0 0 36 28"><use href="#arrow-mark"/></svg>
+    <svg viewBox="0 0 160 28" style="height:22px;">
+      <text x="0" y="22" font-family="Barlow,sans-serif" font-weight="700" font-size="24" fill="white" letter-spacing="2">HOTASCO</text>
+      <text x="2" y="28" font-family="Barlow,sans-serif" font-weight="300" font-size="8" fill="#7A9BB5" letter-spacing="6">GROUP</text>
+    </svg>
+  </div>
+  <ul class="nav-links">
+    <li><a onclick="goTo('home')" id="nav-home" class="active">Ana Sayfa</a></li>
+    <li><a onclick="goTo('about')" id="nav-about">Hakkımızda</a></li>
+    <li><a onclick="goTo('sectors')" id="nav-sectors">Sektörler</a></li>
+    <li><a onclick="goTo('contact')" id="nav-contact">İletişim</a></li>
+  </ul>
+</nav>
+
+<div class="page active" id="page-home">
+
+  <div class="home-hero">
+    <div class="hero-tag">Hotasco Group</div>
+    <h1 class="hero-h1">Güç. Vizyon.<br><span>Değer.</span></h1>
+    <p class="hero-sub">6 sektör · 1 grup yapısı · global büyüme vizyonu</p>
+    <div class="hero-divider"></div>
+  </div>
+
+  <div class="cards-wrap">
+    <div class="cards-row">
+      <div class="co-card card-global" onclick="goTo('global')">
+        
+<div class="co-logo">
+  <svg viewBox="0 0 250 40">
+    <use href="#arrow-mark" x="0" y="4"/>
+    <text x="44" y="28" font-family="Barlow,sans-serif" font-weight="700" font-size="26" fill="white" letter-spacing="2">HOTASCO</text>
+    <text x="46" y="38" font-family="Barlow,sans-serif" font-weight="300" font-size="9" fill="#4A90D9" letter-spacing="7">GLOBAL</text>
+  </svg>
+</div>
+        <div class="co-label">Uluslararası Ticaret</div>
+        <p class="co-desc">İthalat, ihracat ve uluslararası tedarik süreçlerini yöneten; farklı ürün gruplarında güvenilir ticaret altyapısı sunan global operasyon yapımız.</p>
+        <div class="co-link">Detayları İncele</div>
+      </div>
+
+      <div class="co-card card-global" onclick="goTo('food')">
+        
+<div class="co-logo">
+  <svg viewBox="0 0 230 40">
+    <use href="#arrow-mark" x="0" y="4"/>
+    <text x="44" y="28" font-family="Barlow,sans-serif" font-weight="700" font-size="26" fill="white" letter-spacing="2">HOTASCO</text>
+    <text x="46" y="38" font-family="Barlow,sans-serif" font-weight="300" font-size="9" fill="#4A90D9" letter-spacing="7">GIDA</text>
+  </svg>
+</div>
+        <div class="co-label">FMCG & Gıda</div>
+        <p class="co-desc">FMCG ve gıda kategorilerinde marka yönetimi, tedarik, dağıtım ve ihracat operasyonlarını bir araya getiren kurumsal faaliyet alanımız.</p>
+        <div class="co-link">Detayları İncele</div>
+      </div>
+
+      <div class="co-card card-kahve" onclick="goTo('coffee')">
+        
+<div class="co-logo">
+  <svg viewBox="0 0 250 40">
+    <use href="#arrow-mark" x="0" y="4"/>
+    <text x="44" y="28" font-family="Barlow,sans-serif" font-weight="700" font-size="26" fill="white" letter-spacing="2">HOTASCO</text>
+    <text x="46" y="38" font-family="Barlow,sans-serif" font-weight="300" font-size="9" fill="#E8602A" letter-spacing="7">KAHVE</text>
+  </svg>
+</div>
+        <div class="co-label" style="color:#F07040">Kahve & İçecek</div>
+        <p class="co-desc">Premium kahve çözümleri, toptan satış, private label geliştirme ve perakende konseptleri için yapılandırılmış uzmanlık alanımız.</p>
+        <div class="co-link" style="color:#F07040">Detayları İncele</div>
+      </div>
+
+      <div class="co-card card-kimya" onclick="goTo('chemcos')">
+        
+<div class="co-logo">
+  <svg viewBox="0 0 250 40">
+    <use href="#arrow-mark" x="0" y="4"/>
+    <text x="44" y="28" font-family="Barlow,sans-serif" font-weight="700" font-size="26" fill="white" letter-spacing="2">HOTASCO</text>
+    <text x="46" y="38" font-family="Barlow,sans-serif" font-weight="300" font-size="9" fill="#FFFFFF" letter-spacing="6">KİMYA</text>
+  </svg>
+</div>
+        <div class="co-label" style="color:#4A90D9">Kimya & Kozmetik</div>
+        <p class="co-desc">Kimya ve kozmetik kategorilerinde üretim, tedarik, ürün geliştirme ve ticaret süreçlerine odaklanan kurumsal faaliyet alanımız.</p>
+        <div class="co-link" style="color:#4A90D9">Detayları İncele</div>
+      </div>
+
+      <div class="co-card" style="--card-color:#C89A3D" onclick="goTo('technology')">
+        
+<div class="co-logo">
+  <svg viewBox="0 0 290 40">
+    <use href="#arrow-mark" x="0" y="4"/>
+    <text x="44" y="28" font-family="Barlow,sans-serif" font-weight="700" font-size="26" fill="white" letter-spacing="2">HOTASCO</text>
+    <text x="46" y="38" font-family="Barlow,sans-serif" font-weight="300" font-size="9" fill="#C89A3D" letter-spacing="5">TEKNOLOJİ</text>
+  </svg>
+</div>
+        <div class="co-label" style="color:#C89A3D">Teknoloji</div>
+        <p class="co-desc">Yazılım, otomasyon, dijital altyapı ve yenilikçi teknik çözümler üzerine konumlanan gelişim ve yatırım alanımız.</p>
+        <div class="co-link" style="color:#C89A3D">Detayları İncele</div>
+      </div>
+
+      <div class="co-card" style="--card-color:#4C8C67" onclick="goTo('agri')">
+        
+<div class="co-logo">
+  <svg viewBox="0 0 330 40">
+    <use href="#arrow-mark" x="0" y="4"/>
+    <text x="44" y="28" font-family="Barlow,sans-serif" font-weight="700" font-size="26" fill="white" letter-spacing="2">HOTASCO</text>
+    <text x="46" y="38" font-family="Barlow,sans-serif" font-weight="300" font-size="9" fill="#4C8C67" letter-spacing="4">HAYVANCILIK</text>
+  </svg>
+</div>
+        <div class="co-label" style="color:#4C8C67">Hayvancılık</div>
+        <p class="co-desc">Hayvancılık, tarımsal üretim, tedarik ve proje geliştirme başlıklarında sürdürülebilir büyümeyi destekleyen faaliyet alanımız.</p>
+        <div class="co-link" style="color:#4C8C67">Detayları İncele</div>
+      </div>
+    </div>
+  </div>
+
+  <footer>© 2026 Hotasco Group — Tüm Hakları Saklıdır</footer>
+
+</div>
+
+
+<div class="page" id="page-about">
+  <div style="max-width:1100px;margin:0 auto;padding:5rem 3rem 0;">
+    <div class="pg-label">Biz Kimiz</div>
+    <h2 class="pg-h2">Farklı sektörler,<br>tek <span>vizyon.</span></h2>
+
+    <p class="pg-body">Hotasco Group; gıda, kahve, kimya ve kozmetik, teknoloji ve hayvancılık alanlarında faaliyet gösteren çok sektörlü bir şirketler grubudur. Farklı sektörlerdeki deneyimimizi güçlü ticaret altyapısı ve sürdürülebilir büyüme anlayışı ile bir araya getirerek uzun vadeli değer yaratmayı hedefliyoruz.</p>
+
+    <p class="pg-body">Kendi markalarımızın yanı sıra münhasır yetkilisi olduğumuz markalar ile üretim, dağıtım, ticaret, e-ticaret, ithalat ve ihracat operasyonlarını entegre bir yapıda yürütmekteyiz. Her faaliyet alanımızda kalite, sürdürülebilirlik ve güvenilir tedarik anlayışını önceliklendiriyoruz.</p>
+
+    <p class="pg-body">Hotasco Group olarak, üretimden dağıtıma, global ticaretten yerel pazara kadar uzanan geniş operasyon kabiliyetimiz ile farklı sektörlerde ölçeklenebilir ve sürdürülebilir bir ticaret yapısı oluşturmayı hedeflemekteyiz. Yaptığımız her işte temel önceliğimiz; kaliteli ürün, güvenilir iş ortaklığı ve uzun vadeli büyüme yaklaşımıdır.</p>
+
+    <div class="stats-bar" style="max-width:100%">
+      <div class="stat-box"><div class="stat-n">6</div><div class="stat-l">Faaliyet Alanı</div></div>
+      <div class="stat-box"><div class="stat-n">Çok</div><div class="stat-l">Sektörlü Yapı</div></div>
+      <div class="stat-box"><div class="stat-n">Global</div><div class="stat-l">Ticaret Odağı</div></div>
+      <div class="stat-box"><div class="stat-n">Kalite</div><div class="stat-l">Önceliğimiz</div></div>
+    </div>
+  </div>
+
+  <div class="values-grid" style="max-width:1100px;margin:0 auto 4rem;">
+    <div class="val-box"><div class="val-num">01</div><div class="val-title">Kalite Odağı</div><div class="val-desc">Yaptığımız her işte ürün, hizmet ve operasyon kalitesini temel öncelik olarak görürüz.</div></div>
+    <div class="val-box"><div class="val-num">02</div><div class="val-title">Sürdürülebilir Ticaret</div><div class="val-desc">Kısa vadeli değil, uzun vadeli ve güvenilir iş modelleri kurmayı hedefleriz.</div></div>
+    <div class="val-box"><div class="val-num">03</div><div class="val-title">Güvenilir İş Ortaklığı</div><div class="val-desc">Tedarikçilerimiz, müşterilerimiz ve partnerlerimizle istikrarlı ilişkiler geliştirmeye önem veririz.</div></div>
+    <div class="val-box"><div class="val-num">04</div><div class="val-title">Çok Sektörlü Deneyim</div><div class="val-desc">Farklı alanlardaki deneyimimizi ortak bir yönetim anlayışı ve ticari disiplinle birleştiririz.</div></div>
+  </div>
+
+  <div class="about-extra">
+    <div class="info-sections">
+      <div class="info-panel">
+        <h3>Vizyon</h3>
+        <p>Farklı sektörlerde güvenilir, sürdürülebilir ve güçlü ticaret modelleri geliştirerek; kendi markaları, çözüm ortaklıkları ve uluslararası operasyon kabiliyetiyle bölgesel gücünü global ölçekte değer üreten bir yapıya dönüştürmek.</p>
+      </div>
+      <div class="info-panel">
+        <h3>Misyon</h3>
+        <p>Üretim, dağıtım, ticaret, e-ticaret, ithalat ve ihracat süreçlerini entegre şekilde yöneterek; müşterilerimize, iş ortaklarımıza ve faaliyet gösterdiğimiz pazarlara kaliteli ürün, güvenilir hizmet ve sürdürülebilir büyüme odaklı çözümler sunmak.</p>
+      </div>
+    </div>
+
+    <div class="diagram-title" style="margin-bottom:1rem;">Neden Hotasco</div>
+    <div class="why-grid">
+      <div class="why-box">
+        <div class="why-no">01</div>
+        <div class="why-title">Çok Sektörlü Güç</div>
+        <div class="why-desc">Gıda, kahve, kimya ve kozmetik, teknoloji ve hayvancılık alanlarında birbirini destekleyen bir yapı ile faaliyet gösteriyoruz.</div>
+      </div>
+      <div class="why-box">
+        <div class="why-no">02</div>
+        <div class="why-title">Entegre Operasyon</div>
+        <div class="why-desc">Üretimden dağıtıma, e-ticaretten ithalat ve ihracata kadar uzanan operasyon kabiliyetiyle uçtan uca değer üretiyoruz.</div>
+      </div>
+      <div class="why-box">
+        <div class="why-no">03</div>
+        <div class="why-title">Kalite Önceliği</div>
+        <div class="why-desc">Yaptığımız her işte kaliteyi temel öncelik olarak görür; sürdürülebilir ve güvenilir iş modelleri geliştiririz.</div>
+      </div>
+    </div>
+  </div>
+
+  <footer>© 2026 Hotasco Group — Tüm Hakları Saklıdır</footer>
+</div>
+
+
+<div class="page" id="page-sectors">
+  <div class="sectors-wrap">
+    <div class="pg-label">Faaliyet Alanları</div>
+    <h2 class="pg-h2">Altı stratejik alan,<br>tek <span>Hotasco Grup.</span></h2>
+    <p class="pg-body">Hotasco Grup; ticaret, üretim, marka geliştirme ve dağıtım odaklı yapısını farklı sektörlerde sürdürülebilir büyüme yaklaşımıyla konumlandırır. Aşağıdaki faaliyet alanlarının her biri kendi uzmanlık çerçevesinde ayrı bir odak sayfasına bağlanır.</p>
+    <div class="sector-tab-bar">
+      <div class="sector-tab active" style="--card-color:#E8602A" onclick="goTo('global')"><span>Global</span></div>
+      <div class="sector-tab" style="--card-color:#4A90D9" onclick="goTo('food')"><span>Gıda</span></div>
+      <div class="sector-tab" style="--card-color:#F07040" onclick="goTo('coffee')"><span>Kahve</span></div>
+      <div class="sector-tab" style="--card-color:#4A90D9" onclick="goTo('chemcos')"><span>Kimya ve Kozmetik</span></div>
+      <div class="sector-tab" style="--card-color:#C89A3D" onclick="goTo('technology')"><span>Teknoloji</span></div>
+      <div class="sector-tab" style="--card-color:#4C8C67" onclick="goTo('agri')"><span>Hayvancılık</span></div>
+    </div>
+    <div class="sector-cards">
+      <div class="sc sc-global" onclick="goTo('global')" style="--card-color:#E8602A">
+        <div class="sc-num">01</div>
+        <div class="sc-logo"><svg viewBox="0 0 200 32"><use href="#arrow-mark" x="0" y="2" transform="scale(0.85)"/><text x="34" y="24" font-family="Barlow,sans-serif" font-weight="700" font-size="22" fill="white" letter-spacing="2">HOTASCO</text><text x="36" y="32" font-family="Barlow,sans-serif" font-weight="300" font-size="7" fill="#4A90D9" letter-spacing="6">GLOBAL</text></svg></div>
+        <p class="sc-body">Global kartı: Gıda ve kozmetik alanlarında kendi markalarımızın ve tek yetkili olduğumuz markaların ihracatına odaklanmış yapıdır. E‑ihracat ve ihracat operasyonlarını yürütür. Global partnerlerle yurtiçine ithalat da yapılmaktadır.</p>
+        <div class="sc-tags"><span class="tag">İthalat</span><span class="tag">İhracat</span><span class="tag">Global Tedarik</span></div>
+      </div>
+
+      <div class="sc sc-global" onclick="goTo('food')" style="--card-color:#4A90D9">
+        <div class="sc-num">02</div>
+        <div class="sc-logo"><svg viewBox="0 0 200 32"><use href="#arrow-mark" x="0" y="2" transform="scale(0.85)"/><text x="34" y="24" font-family="Barlow,sans-serif" font-weight="700" font-size="22" fill="white" letter-spacing="2">HOTASCO</text><text x="36" y="32" font-family="Barlow,sans-serif" font-weight="300" font-size="7" fill="#4A90D9" letter-spacing="6">GIDA</text></svg></div>
+        <p class="sc-body">Gıda kartı: Köfte ve süt ürünleri üretimi, e‑ticaret ve yurtiçi ticareti önceleyen üretim ve ticaret yapımızdır.</p>
+        <div class="sc-tags"><span class="tag">FMCG</span><span class="tag">Dağıtım</span><span class="tag">Marka Yönetimi</span></div>
+      </div>
+
+      <div class="sc sc-kahve" onclick="goTo('coffee')">
+        <div class="sc-num">03</div>
+        <div class="sc-logo"><svg viewBox="0 0 200 32"><use href="#arrow-mark" x="0" y="2" transform="scale(0.85)"/><text x="34" y="24" font-family="Barlow,sans-serif" font-weight="700" font-size="22" fill="white" letter-spacing="2">HOTASCO</text><text x="36" y="32" font-family="Barlow,sans-serif" font-weight="300" font-size="7" fill="#E8602A" letter-spacing="6">KAHVE</text></svg></div>
+        <p class="sc-body">Kahve kartı: Valaso ve Barbaros markalarımızla yurtiçi ve yurtdışı kahve ticareti yapılmaktadır. B2B yeşil çekirdek ve kavrulmuş kahve ticareti yapılmaktadır.</p>
+        <div class="sc-tags"><span class="tag">Premium Kahve</span><span class="tag">Private Label</span><span class="tag">Toptan</span></div>
+      </div>
+
+      <div class="sc sc-kimya" onclick="goTo('chemcos')">
+        <div class="sc-num">04</div>
+        <div class="sc-logo"><svg viewBox="0 0 200 32"><use href="#arrow-mark" x="0" y="2" transform="scale(0.85)"/><text x="34" y="24" font-family="Barlow,sans-serif" font-weight="700" font-size="22" fill="white" letter-spacing="2">HOTASCO</text><text x="36" y="32" font-family="Barlow,sans-serif" font-weight="300" font-size="7" fill="#FFFFFF" letter-spacing="6">KİMYA</text></svg></div>
+        <p class="sc-body">Kimya ve kozmetik kartı: Global partner ve üretim formülleri ile Türkiye’de üretim yapan B2B ve e‑ticaret odaklı yapıdır.</p>
+        <div class="sc-tags"><span class="tag">Kimya</span><span class="tag">Kozmetik</span><span class="tag">Ürün Geliştirme</span></div>
+      </div>
+
+      <div class="sc sc-tech" onclick="goTo('technology')" style="--card-color:#C89A3D">
+        <div class="sc-num">05</div>
+        <div class="sc-logo"><svg viewBox="0 0 220 32"><use href="#arrow-mark" x="0" y="2" transform="scale(0.85)"/><text x="34" y="24" font-family="Barlow,sans-serif" font-weight="700" font-size="22" fill="white" letter-spacing="2">HOTASCO</text><text x="36" y="32" font-family="Barlow,sans-serif" font-weight="300" font-size="7" fill="#C89A3D" letter-spacing="5">TEKNOLOJİ</text></svg></div>
+        <p class="sc-body">Teknoloji kartı: Krautec ile robot ithalatı ve endüstriyel otomasyon çözümleri sunulmaktadır.</p>
+        <div class="sc-tags"><span class="tag">Yazılım</span><span class="tag">Otomasyon</span><span class="tag">Dijital Altyapı</span></div>
+      </div>
+
+      <div class="sc sc-agri" onclick="goTo('agri')" style="--card-color:#4C8C67">
+        <div class="sc-num">06</div>
+        <div class="sc-logo"><svg viewBox="0 0 240 32"><use href="#arrow-mark" x="0" y="2" transform="scale(0.85)"/><text x="34" y="24" font-family="Barlow,sans-serif" font-weight="700" font-size="22" fill="white" letter-spacing="2">HOTASCO</text><text x="36" y="32" font-family="Barlow,sans-serif" font-weight="300" font-size="7" fill="#4C8C67" letter-spacing="4">HAYVANCILIK</text></svg></div>
+        <p class="sc-body">Hayvancılık kartı: Büyükbaş hayvancılık alanında et ve süt üretimi yapan çiftliğimiz bulunmaktadır.</p>
+        <div class="sc-tags"><span class="tag">Hayvancılık</span><span class="tag">Tarım</span><span class="tag">Sürdürülebilir Üretim</span></div>
+      </div>
+    </div>
+  </div>
+  <footer>© 2026 Hotasco Group — Tüm Hakları Saklıdır</footer>
+</div>
+
+<div class="page" id="page-global">
+  <div class="detail-wrap">
+    <div class="pg-label">Hotasco Global</div>
+    <h2 class="pg-h2">Uluslararası ticaretin <span>merkez yapısı</span></h2>
+    <div class="sector-tab-bar">
+      <div class="sector-tab active" style="--card-color:#E8602A" onclick="goTo('global')"><span>Global</span></div>
+      <div class="sector-tab" style="--card-color:#4A90D9" onclick="goTo('food')"><span>Gıda</span></div>
+      <div class="sector-tab" style="--card-color:#F07040" onclick="goTo('coffee')"><span>Kahve</span></div>
+      <div class="sector-tab" style="--card-color:#4A90D9" onclick="goTo('chemcos')"><span>Kimya ve Kozmetik</span></div>
+      <div class="sector-tab" style="--card-color:#C89A3D" onclick="goTo('technology')"><span>Teknoloji</span></div>
+      <div class="sector-tab" style="--card-color:#4C8C67" onclick="goTo('agri')"><span>Hayvancılık</span></div>
+    </div>
+    <div class="detail-grid">
+      <div class="detail-main" style="--accent:#E8602A;">
+        <div class="detail-kicker">Hotasco Global</div>
+        <div class="detail-title">İthalat, ihracat ve <span>uluslararası tedarik</span></div>
+        <p class="detail-copy">Hotasco Global; gıda ve kozmetik alanlarında kendi markalarımızın ve tek yetkili satıcısı olduğumuz markaların ihracatına odaklanmış şirketimizdir. E-ihracat ve ihracat operasyonlarını aktif şekilde yürütür; üretim ve iletişimde süreklilik anlayışıyla sürdürülebilir ve ölçeklenebilir bir ticaret yapısı oluşturmayı hedefler.</p>
+        <p class="detail-copy">Aynı zamanda büyük commercial grup firmalarıyla global partnerlikler geliştirerek yurtiçine ithalat operasyonları da gerçekleştirmekteyiz. Böylece hem dış pazarlara açılan hem de iç pazarı güçlü tedarik ilişkileriyle destekleyen bütüncül bir ticaret modeli kurmaktayız.</p>
+        <ul class="detail-list">
+          <li>Gıda ve kozmetik alanlarında ihracat ve e-ihracat operasyonları</li>
+          <li>Global partnerlikler ile ithalat ve tedarik yönetimi</li>
+          <li>Sürdürülebilir, ölçeklenebilir ve iletişimi güçlü ticaret yapısı</li>
+        </ul>
+      </div>
+      <div class="detail-side" style="--accent:#E8602A;">
+        <h3>Faaliyet başlıkları</h3>
+        <div class="info-chip">Import & Export</div>
+        <div class="info-chip">Global Trade</div>
+        <div class="info-chip">Sourcing</div>
+        <div class="info-chip">Business Development</div>
+        <div class="placeholder-note">Bu sayfa, yayınlanabilir kurumsal bir çerçeveyle hazırlanmıştır. İstenirse ülke bazlı operasyonlar ve ürün grupları ayrıca detaylandırılabilir.</div>
+      </div>
+    </div>
+  </div>
+  <footer>© 2026 Hotasco Group — Tüm Hakları Saklıdır</footer>
+</div>
+
+<div class="page" id="page-food">
+  <div class="detail-wrap">
+    <div class="pg-label">Hotasco Gıda</div>
+    <h2 class="pg-h2">FMCG ve gıda ticaretinde <span>güçlü yapı</span></h2>
+    <div class="sector-tab-bar">
+      <div class="sector-tab" style="--card-color:#E8602A" onclick="goTo('global')"><span>Global</span></div>
+      <div class="sector-tab active" style="--card-color:#4A90D9" onclick="goTo('food')"><span>Gıda</span></div>
+      <div class="sector-tab" style="--card-color:#F07040" onclick="goTo('coffee')"><span>Kahve</span></div>
+      <div class="sector-tab" style="--card-color:#4A90D9" onclick="goTo('chemcos')"><span>Kimya ve Kozmetik</span></div>
+      <div class="sector-tab" style="--card-color:#C89A3D" onclick="goTo('technology')"><span>Teknoloji</span></div>
+      <div class="sector-tab" style="--card-color:#4C8C67" onclick="goTo('agri')"><span>Hayvancılık</span></div>
+    </div>
+    <div class="detail-grid">
+      <div class="detail-main" style="--accent:#4A90D9;">
+        <div class="detail-kicker">Hotasco Gıda</div>
+        <div class="detail-title">Gıda kategorilerinde <span>kurumsal büyüme</span></div>
+        <p class="detail-copy">Hotasco Gıda; köfte ve süt ürünleri üretimi, e-ticaret ve yurtiçi ticareti önceleyen faaliyet alanımızdır. Ürün kalitesi, güvenilir tedarik ve doğru operasyon yönetimi ile yerel pazarda güçlü ve sürdürülebilir bir yapı oluşturmayı hedeflemektedir.</p>
+        <p class="detail-copy">Üretimden satışa kadar uzanan süreçlerde kalite önceliği ile hareket eder; gelişen tüketici ihtiyaçlarına uygun, istikrarlı ve ölçeklenebilir bir ticaret anlayışını esas alır.</p>
+        <ul class="detail-list">
+          <li>Köfte ve süt ürünleri üretim yapısı</li>
+          <li>E-ticaret ve yurtiçi ticaret operasyonları</li>
+          <li>Kalite odaklı sürdürülebilir büyüme yaklaşımı</li>
+        </ul>
+      </div>
+      <div class="detail-side" style="--accent:#4A90D9;">
+        <h3>Faaliyet başlıkları</h3>
+        <div class="info-chip">FMCG</div>
+        <div class="info-chip">Distribution</div>
+        <div class="info-chip">Export Markets</div>
+        <div class="info-chip">Brand Portfolio</div>
+        <div class="placeholder-note">Bu bölüm, ürün grupları ve markalar eklendiğinde doğrudan yayınlanabilecek profesyonel bir altyapı sunar.</div>
+      </div>
+    </div>
+  </div>
+  <footer>© 2026 Hotasco Group — Tüm Hakları Saklıdır</footer>
+</div>
+
+<div class="page" id="page-coffee">
+  <div class="detail-wrap">
+    <div class="pg-label">Hotasco Kahve</div>
+    <h2 class="pg-h2">Kahve alanında <span>premium uzmanlık</span></h2>
+    <div class="sector-tab-bar">
+      <div class="sector-tab" style="--card-color:#E8602A" onclick="goTo('global')"><span>Global</span></div>
+      <div class="sector-tab" style="--card-color:#4A90D9" onclick="goTo('food')"><span>Gıda</span></div>
+      <div class="sector-tab active" style="--card-color:#F07040" onclick="goTo('coffee')"><span>Kahve</span></div>
+      <div class="sector-tab" style="--card-color:#4A90D9" onclick="goTo('chemcos')"><span>Kimya ve Kozmetik</span></div>
+      <div class="sector-tab" style="--card-color:#C89A3D" onclick="goTo('technology')"><span>Teknoloji</span></div>
+      <div class="sector-tab" style="--card-color:#4C8C67" onclick="goTo('agri')"><span>Hayvancılık</span></div>
+    </div>
+    <div class="detail-grid">
+      <div class="detail-main" style="--accent:#F07040;">
+        <div class="detail-kicker">Hotasco Kahve</div>
+        <div class="detail-title">Ürün, marka ve ticaretin <span>kahve odağı</span></div>
+        <p class="detail-copy">Hotasco Kahve; Valaso ve Barbaros markalarımızla yurtiçi ve yurtdışı kahve ticareti yapan üretim ve ticaret şirketidir. B2B toptan kavrulmuş kahve, yeşil çekirdek ticareti, HORECA kanalı ve perakende market sektöründe faaliyet göstermektedir.</p>
+        <p class="detail-copy">Türkiye’de sektörün öncüleriyle aynı kalite ve lezzet anlayışını sürdürürken; global büyük partnerlerle çalışarak yeşil çekirdek ticaretinde güçlü bir ithalatçı konumunda yer almaktadır.</p>
+        <ul class="detail-list">
+          <li>Valaso ve Barbaros markalarıyla kahve ticareti</li>
+          <li>Kavrulmuş kahve, yeşil çekirdek, HORECA ve perakende kanalları</li>
+          <li>Kalite, lezzet ve güçlü ithalat altyapısı</li>
+        </ul>
+      </div>
+      <div class="detail-side" style="--accent:#F07040;">
+        <h3>Faaliyet başlıkları</h3>
+        <div class="info-chip">Premium Coffee</div>
+        <div class="info-chip">Private Label</div>
+        <div class="info-chip">Wholesale</div>
+        <div class="info-chip">Retail Concepts</div>
+        <div class="placeholder-note">Sayfa içeriği yayınlanabilir seviyeye çekildi. İstenirse ürün çeşitleri ve marka hikâyesi ayrıca işlenebilir.</div>
+      </div>
+    </div>
+  </div>
+  <footer>© 2026 Hotasco Group — Tüm Hakları Saklıdır</footer>
+</div>
+
+<div class="page" id="page-chemcos">
+  <div class="detail-wrap">
+    <div class="pg-label">Hotasco Kimya & Kozmetik</div>
+    <h2 class="pg-h2">Kimya ve kozmetikte <span>entegrasyon odaklı yapı</span></h2>
+    <div class="sector-tab-bar">
+      <div class="sector-tab" style="--card-color:#E8602A" onclick="goTo('global')"><span>Global</span></div>
+      <div class="sector-tab" style="--card-color:#4A90D9" onclick="goTo('food')"><span>Gıda</span></div>
+      <div class="sector-tab" style="--card-color:#F07040" onclick="goTo('coffee')"><span>Kahve</span></div>
+      <div class="sector-tab active" style="--card-color:#4A90D9" onclick="goTo('chemcos')"><span>Kimya ve Kozmetik</span></div>
+      <div class="sector-tab" style="--card-color:#C89A3D" onclick="goTo('technology')"><span>Teknoloji</span></div>
+      <div class="sector-tab" style="--card-color:#4C8C67" onclick="goTo('agri')"><span>Hayvancılık</span></div>
+    </div>
+    <div class="detail-grid">
+      <div class="detail-main" style="--accent:#4A90D9;">
+        <div class="detail-kicker">Hotasco Kimya & Kozmetik</div>
+        <div class="detail-title">Tedarikten ürüne <span>bütüncül yaklaşım</span></div>
+        <p class="detail-copy">Hotasco Kimya & Kozmetik; global partnerlikler ve üretim formülleri ile Türkiye’de üretim yapan, B2B, market zincirleri ve e-ticaret kanallarına odaklanan faaliyet alanımızdır.</p>
+        <p class="detail-copy">Ürün geliştirme, üretim sürekliliği ve doğru kanal yönetimi ile hem kurumsal müşterilere hem de son kullanıcıya ulaşan güçlü ve ölçeklenebilir bir yapı oluşturmayı hedeflemektedir.</p>
+        <ul class="detail-list">
+          <li>Global partner destekli üretim ve formülasyon altyapısı</li>
+          <li>B2B, market zincirleri ve e-ticaret odağı</li>
+          <li>Üretimden satış kanalına uzanan entegre yapı</li>
+        </ul>
+      </div>
+      <div class="detail-side" style="--accent:#4A90D9;">
+        <h3>Faaliyet başlıkları</h3>
+        <div class="info-chip">Chemical Supply</div>
+        <div class="info-chip">Cosmetics</div>
+        <div class="info-chip">Formulation</div>
+        <div class="info-chip">Product Development</div>
+        <div class="placeholder-note">Bu sayfa, kurumsal dilde yayınlanabilir bir temel sunar. Ürün bazlı alt sayfalar daha sonra eklenebilir.</div>
+      </div>
+    </div>
+  </div>
+  <footer>© 2026 Hotasco Group — Tüm Hakları Saklıdır</footer>
+</div>
+
+<div class="page" id="page-technology">
+  <div class="detail-wrap">
+    <div class="pg-label">Hotasco Teknoloji</div>
+    <h2 class="pg-h2">Verimlilik ve dönüşüm için <span>teknoloji odağı</span></h2>
+    <div class="sector-tab-bar">
+      <div class="sector-tab" style="--card-color:#E8602A" onclick="goTo('global')"><span>Global</span></div>
+      <div class="sector-tab" style="--card-color:#4A90D9" onclick="goTo('food')"><span>Gıda</span></div>
+      <div class="sector-tab" style="--card-color:#F07040" onclick="goTo('coffee')"><span>Kahve</span></div>
+      <div class="sector-tab" style="--card-color:#4A90D9" onclick="goTo('chemcos')"><span>Kimya ve Kozmetik</span></div>
+      <div class="sector-tab active" style="--card-color:#C89A3D" onclick="goTo('technology')"><span>Teknoloji</span></div>
+      <div class="sector-tab" style="--card-color:#4C8C67" onclick="goTo('agri')"><span>Hayvancılık</span></div>
+    </div>
+    <div class="detail-grid">
+      <div class="detail-main" style="--accent:#C89A3D;">
+        <div class="detail-kicker">Hotasco Teknoloji</div>
+        <div class="detail-title">Dijital altyapı ve <span>yenilikçi çözümler</span></div>
+        <p class="detail-copy">Hotasco Teknoloji; Krautec şirketiyle Türkiye’ye robot ithalatı ve entegrasyonu gerçekleştirdiğimiz, endüstriyel otomasyon ve robot çözümleri sunduğumuz proje şirketi yapımızdır.</p>
+        <p class="detail-copy">Müşterilerimizin üretim ve operasyon süreçlerine verimlilik kazandıran, teknik kabiliyeti yüksek ve sonuç odaklı çözümler geliştirmeyi amaçlamaktayız.</p>
+        <ul class="detail-list">
+          <li>Robot ithalatı ve entegrasyon projeleri</li>
+          <li>Endüstriyel otomasyon ve robot çözümleri</li>
+          <li>Verimlilik odaklı teknik proje yaklaşımı</li>
+        </ul>
+      </div>
+      <div class="detail-side" style="--accent:#C89A3D;">
+        <h3>Faaliyet başlıkları</h3>
+        <div class="info-chip">Software</div>
+        <div class="info-chip">Automation</div>
+        <div class="info-chip">Digital Systems</div>
+        <div class="info-chip">Efficiency</div>
+        <div class="placeholder-note">Bu alan, teknoloji tarafını net ama esnek bir çerçevede sunar; ileride alt başlıklar rahatça eklenebilir.</div>
+      </div>
+    </div>
+  </div>
+  <footer>© 2026 Hotasco Group — Tüm Hakları Saklıdır</footer>
+</div>
+
+<div class="page" id="page-agri">
+  <div class="detail-wrap">
+    <div class="pg-label">Hotasco Hayvancılık</div>
+    <h2 class="pg-h2">Üretim ve tedarikte <span>sürdürülebilir yaklaşım</span></h2>
+    <div class="sector-tab-bar">
+      <div class="sector-tab" style="--card-color:#E8602A" onclick="goTo('global')"><span>Global</span></div>
+      <div class="sector-tab" style="--card-color:#4A90D9" onclick="goTo('food')"><span>Gıda</span></div>
+      <div class="sector-tab" style="--card-color:#F07040" onclick="goTo('coffee')"><span>Kahve</span></div>
+      <div class="sector-tab" style="--card-color:#4A90D9" onclick="goTo('chemcos')"><span>Kimya ve Kozmetik</span></div>
+      <div class="sector-tab" style="--card-color:#C89A3D" onclick="goTo('technology')"><span>Teknoloji</span></div>
+      <div class="sector-tab active" style="--card-color:#4C8C67" onclick="goTo('agri')"><span>Hayvancılık</span></div>
+    </div>
+    <div class="detail-grid">
+      <div class="detail-main" style="--accent:#4C8C67;">
+        <div class="detail-kicker">Hotasco Hayvancılık</div>
+        <div class="detail-title">Hayvancılık ve tarımda <span>değer odaklı yapı</span></div>
+        <p class="detail-copy">Hotasco Hayvancılık; büyükbaş hayvancılık sektöründe et ve süt üretimi yapan çiftlik operasyonumuzu temsil etmektedir.</p>
+        <p class="detail-copy">Üretim kalitesi, süreklilik ve verimlilik odaklı yaklaşımımızla; güvenilir üretim modeli üzerinden sürdürülebilir büyüme sağlamayı hedeflemekteyiz.</p>
+        <ul class="detail-list">
+          <li>Büyükbaş hayvancılık odaklı üretim yapısı</li>
+          <li>Et ve süt üretimi yapan çiftlik operasyonu</li>
+          <li>Kalite ve verimlilik odaklı sürdürülebilir model</li>
+        </ul>
+      </div>
+      <div class="detail-side" style="--accent:#4C8C67;">
+        <h3>Faaliyet başlıkları</h3>
+        <div class="info-chip">Livestock</div>
+        <div class="info-chip">Agriculture</div>
+        <div class="info-chip">Production</div>
+        <div class="info-chip">Project Development</div>
+        <div class="placeholder-note">Yayın öncesi için yeterince güçlü bir temel hazırlandı. Dilerseniz bu alanı daha teknik veya daha yatırımcı odaklı bir dile de çevirebiliriz.</div>
+      </div>
+    </div>
+  </div>
+  <footer>© 2026 Hotasco Group — Tüm Hakları Saklıdır</footer>
+</div>
+
+
+<div class="page" id="page-contact">
+  <div class="contact-wrap">
+    <div class="pg-label">Bize Ulaşın</div>
+    <h2 class="pg-h2">Birlikte<br><span>konuşalım.</span></h2>
+    <div class="contact-grid">
+      <div class="contact-form">
+        <div class="c-group"><label class="c-label">Ad Soyad</label><input class="c-input" placeholder="Adınız Soyadınız"/></div>
+        <div class="c-group"><label class="c-label">E-posta</label><input class="c-input" placeholder="ornek@mail.com"/></div>
+        <div class="c-group"><label class="c-label">Konu</label><input class="c-input" placeholder="Mesajınızın konusu"/></div>
+        <div class="c-group"><label class="c-label">Mesaj</label><textarea class="c-input" placeholder="Mesajınızı buraya yazın..."></textarea></div>
+        <button class="c-btn">Gönder →</button>
+      </div>
+      <div class="contact-info-box" style="padding:3rem;">
+        <div class="ci-item"><div class="ci-lbl">Genel Merkez</div><div class="ci-val">İstanbul, Türkiye</div></div>
+        <div class="ci-item"><div class="ci-lbl">E-posta</div><div class="ci-val">info@hotasco.com</div></div>
+        <div class="ci-item"><div class="ci-lbl">Telefon</div><div class="ci-val">+90 212 000 00 00</div></div>
+        <div class="ci-item"><div class="ci-lbl">Çalışma Saatleri</div><div class="ci-val">Pazartesi – Cuma<br>09:00 – 18:00</div></div>
+        </div>
+    </div>
+  </div>
+  <footer>© 2026 Hotasco Group — Tüm Hakları Saklıdır</footer>
+</div>
+
+<script>
+function goTo(page){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));
+  const target = document.getElementById('page-'+page);
+  if(target){
+    target.classList.add('active');
+  }
+  const navMap = {
+    home:'nav-home',
+    about:'nav-about',
+    sectors:'nav-sectors',
+    global:'nav-sectors',
+    food:'nav-sectors',
+    coffee:'nav-sectors',
+    chemcos:'nav-sectors',
+    technology:'nav-sectors',
+    agri:'nav-sectors',
+    contact:'nav-contact'
+  };
+  const navId = navMap[page];
+  if(navId && document.getElementById(navId)){
+    document.getElementById(navId).classList.add('active');
+  }
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+</script>
+</body>
+</html>
