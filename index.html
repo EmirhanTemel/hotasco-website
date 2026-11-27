@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hotasco Kahve | Kafe, restoran ve ofislere toptan kahve</title>
+<meta name="description" content="Hotasco Kahve kahve kavurur ve toptan satar. Espresso harmanları, filtre kahve, tek köken ve nitelikli kahveler, Türk kahvesi, toz ürünler ve çaylar. Türkiye geneli kargo, önce numune.">
+<meta property="og:title" content="Hotasco Kahve | Toptan kahve">
+<meta property="og:description" content="Kahveyi kavuruyor, işletmenize getiriyoruz. Kafe, restoran, otel ve ofislere toptan kahve.">
+<meta property="og:image" content="https://hotasco.com/assets/og.jpg">
+<meta property="og:url" content="https://hotasco.com/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="tr_TR">
+<link rel="canonical" href="https://hotasco.com/">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preload" href="assets/archivo-latin-standard-normal.woff2" as="font" type="font/woff2" crossorigin>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"Hotasco Kahve","url":"https://hotasco.com/","logo":"https://hotasco.com/assets/favicon.png","email":"info@hotasco.com","telephone":"+90 553 488 56 56","sameAs":["https://www.instagram.com/hotascokahve/"]}
+</script>
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+
+<div class="sahne-blok tam">
+  <div class="kap">
+    <header class="ust">
+      <a href="#" aria-label="Hotasco Kahve ana sayfa"><img src="assets/logo.svg" alt="Hotasco Kahve" width="227" height="68"></a>
+      <nav aria-label="Ana menü">
+        <a href="urunler.html">Ürünler</a>
+        <a href="assets/Hotasco_Kahve_Katalog_2026.pdf" download>Katalog</a>
+        <a href="#nasil">Nasıl çalışır</a>
+        <a href="#iletisim">İletişim</a>
+        <a class="dugme dugme-dolu" href="https://wa.me/905534885656?text=Merhaba%2C%20toptan%20kahve%20fiyat%20listesi%20almak%20istiyorum." target="_blank" rel="noopener">WhatsApp'tan yazın</a>
+      </nav>
+    </header>
+
+    <div class="giris">
+      <div>
+        <h1>Kahveyi kavuruyor, işletmenize getiriyoruz.</h1>
+        <p class="alt">Kafe, restoran, otel ve ofislere toptan kahve. Espresso harmanlarından Türk kahvesine, nitelikli kahvelerden çaylara kadar her şey tek yerden. İstanbul'da özenle kavuruyoruz, tüm Türkiye'ye hızlıca kargoluyoruz.</p>
+        <div class="eylem">
+          <a class="dugme dugme-dolu" href="https://wa.me/905534885656?text=Merhaba%2C%20toptan%20kahve%20fiyat%20listesi%20almak%20istiyorum." target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.2-.2-.5-.3Z"/></svg>
+            Fiyat listesi isteyin
+          </a>
+          <a class="dugme dugme-bos" href="urunler.html">Tüm ürünler</a>
+        </div>
+      </div>
+
+      <div class="vitrin" aria-label="Ürün vitrini">
+        <p class="damga">Günde 2,5 ton<small>kavurma kapasitesi</small></p>
+        <div class="sekmeler" role="tablist" aria-label="Ürün grupları"></div>
+        <div class="sahne" id="sahne">
+          <div class="isik" id="isik" aria-hidden="true"></div>
+          <div class="zemin" aria-hidden="true"></div>
+          <div class="halka" id="halka"></div>
+        </div>
+        <div class="bilgi">
+          <button class="ok" id="geri" type="button" aria-label="Önceki ürün">‹</button>
+          <div class="bilgi-metin" aria-live="polite">
+            <h3 id="b-ad"></h3>
+            <p class="not" id="b-not"></p>
+            <p class="sayac" id="b-sayac"></p>
+          </div>
+          <button class="ok" id="ileri" type="button" aria-label="Sonraki ürün">›</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main>
+  <section class="bolum mizah" aria-labelledby="mizah-baslik">
+    <div class="kap mizah-ic">
+      <h2 id="mizah-baslik">Kolombiya'da çiftliğimiz yok. Limanda gemimiz de.</h2>
+      <div class="yazi">
+        <p>Çekirdeği tarladan biz toplamıyoruz, konteyneri gümrükten biz çekmiyoruz. Bu işi yıllardır yapan ithalatçılar var ve işlerini iyi yapıyorlar.</p>
+        <p>Biz bize düşeni yapıyoruz: doğru çekirdeği seçiyor, kavuruyor, paketliyor ve işletmenize getiriyoruz.</p>
+        <p class="imza">Kahvemiz var.</p>
+        <p class="dipnot">Bir gün gemi alırsak ilk buraya yazacağız.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bolum" id="urunler" aria-labelledby="urunler-baslik">
+    <div class="kap">
+      <div class="bolum-giris">
+        <h2 id="urunler-baslik">Ürünlerimiz</h2>
+        <p>Espresso ve filtre harmanları, tek köken ve nitelikli kahveler, Türk kahvesi, toz ürünler ve çaylar. Fiyat listesi için WhatsApp'tan yazın.</p>
+      </div>
+      <ul class="vitrin-foto">
+        <li><figure><img src="assets/espresso-classic.jpg" alt="Espresso Classic Blend 1 kg paket" width="800" height="1000" loading="lazy"><figcaption>Espresso Classic</figcaption></figure></li>
+        <li><figure><img src="assets/espresso-special.jpg" alt="Espresso Special Blend 1 kg paket" width="800" height="1000" loading="lazy"><figcaption>Espresso Special</figcaption></figure></li>
+        <li><figure><img src="assets/filtre-kahve.jpg" alt="Filtre Kahve Classic Blend 1 kg paket" width="800" height="1000" loading="lazy"><figcaption>Filtre Kahve</figcaption></figure></li>
+        <li><figure><img src="assets/turk-kahvesi.jpg" alt="Türk Kahvesi paket" width="800" height="1000" loading="lazy"><figcaption>Türk Kahvesi</figcaption></figure></li>
+      </ul>
+      <div class="urun-eylem">
+        <a class="dugme dugme-dolu" href="urunler.html">Tüm ürünleri görün</a>
+        <a class="dugme dugme-bos" href="assets/Hotasco_Kahve_Katalog_2026.pdf" download>Kataloğu indirin (PDF)</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="bolum adimlar" id="nasil" aria-labelledby="nasil-baslik">
+    <div class="kap">
+      <div class="bolum-giris"><h2 id="nasil-baslik">Nasıl çalışır?</h2></div>
+      <ol class="adim-dizi">
+        <li><h3>Numune deneyin</h3><p>Siparişten önce kahvemizi tadın. İstanbul'da elden ücretsiz getiriyoruz; kargoyla gönderimde yalnızca kargo ücretini ödersiniz.</p></li>
+        <li><h3>Siparişinizi yazın</h3><p>Ürünü ve miktarı WhatsApp'tan iletin. En az 1 kg ile başlayabilirsiniz. Kartla ödeme, nakitle aynı fiyat.</p></li>
+        <li><h3>Kargoya veriyoruz</h3><p>Türkiye'nin her yerine gönderiyoruz.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="bolum" aria-labelledby="kimler-baslik">
+    <div class="kap kimler-ic">
+      <div>
+        <h2 id="kimler-baslik" class="isletmeler">Kafeler, restoranlar, oteller, ofisler, okullar, klinikler. Kahve içilen her işletme.</h2>
+        <p class="aciklama">Sadece işletmelere satış yapıyoruz. Perakende satmıyor, müşterimizin müşterisine göz dikmiyoruz.</p>
+      </div>
+      <div>
+        <div class="kutu">
+          <h3>Size özel kahve</h3>
+          <p>Listede olmayan bir kahve mi arıyorsunuz? Single origin kahveler, farklı blendler ve işletmenize özel reçeteler hazırlıyoruz. Bütçenize uygun kahveyi birlikte oluşturalım.</p>
+          <a class="dugme dugme-dolu" href="https://wa.me/905534885656?text=Merhaba%2C%20i%C5%9Fletmemize%20%C3%B6zel%20kahve%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener">Özel kahve için yazın</a>
+        </div>
+        <div class="kutu">
+          <h3>Kendi etiketinizle</h3>
+          <p>Ofisinize, okulunuza ya da kliniğinize kendi etiketinizi taşıyan Türk kahvesi hazırlıyoruz. Düzenli teslimat yapıyoruz.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bolum paketler" aria-labelledby="paket-baslik">
+    <div class="kap paketler-ic">
+      <img src="assets/koli.jpg" alt="Hotasco Kahve kolisi ve 1 kg paketler" width="1200" height="1489" loading="lazy">
+      <div>
+        <h2 id="paket-baslik">Paket ve koli</h2>
+        <table>
+          <tr><th scope="row">250 g</th><td>Küçük koli 20 paket, büyük koli 40 paket</td></tr>
+          <tr><th scope="row">1 kg</th><td>Küçük koli 6 paket, büyük koli 15 paket</td></tr>
+          <tr><th scope="row">100 g</th><td>Toz ürünler ve çaylar</td></tr>
+        </table>
+              </div>
+    </div>
+  </section>
+
+  <section class="bolum iletisim" id="iletisim" aria-labelledby="iletisim-baslik">
+    <div class="kap iletisim-ic">
+      <div>
+        <h2 id="iletisim-baslik">Fiyat listesi bir mesaj uzağınızda.</h2>
+        <p class="alt">Hangi kahveyi, ne kadar kullandığınızı yazın; size uygun ürünü ve güncel fiyatları hemen iletelim.</p>
+        <div class="eylem">
+          <a class="dugme dugme-dolu" href="https://wa.me/905534885656?text=Merhaba%2C%20toptan%20kahve%20fiyat%20listesi%20almak%20istiyorum." target="_blank" rel="noopener">WhatsApp'tan yazın</a>
+          <a class="dugme dugme-bos" href="tel:+905534885656">Arayın</a>
+        </div>
+      </div>
+      <dl>
+        <dt>WhatsApp</dt><dd><a href="https://wa.me/905534885656" target="_blank" rel="noopener">0553 488 56 56</a></dd>
+        <dt>E-posta</dt><dd><a href="mailto:info@hotasco.com">info@hotasco.com</a></dd>
+        <dt>Instagram</dt><dd><a href="https://www.instagram.com/hotascokahve/" target="_blank" rel="noopener">@hotascokahve</a></dd>
+        <dt>Adres</dt><dd>Tantavi Mah. Estergon Cad. Exen İstanbul Sitesi F Blok No: 24F İç Kapı No: 85, Ümraniye / İstanbul</dd>
+      </dl>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="kap">
+    <img src="assets/logo-beyaz.svg" alt="Hotasco Kahve" width="160" height="48">
+    <span>© 2026 Hotasco Kahve. Toptan kahve tedariki.</span>
+  </div>
+</footer>
+
+<a class="yuzen" href="https://wa.me/905534885656?text=Merhaba%2C%20toptan%20kahve%20fiyat%20listesi%20almak%20istiyorum." target="_blank" rel="noopener" aria-label="WhatsApp'tan yazın">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.2-.2-.5-.3Z"/></svg>
+</a>
+
+<script>
+const GRUPLAR = [
+  {id:"klasik", ad:"Espresso ve filtre", paket:"250 g ve 1 kg", urunler:[
+    ["Espresso Classic Blend","Yüksek gövde, bitter çikolata"],
+    ["Espresso Special Blend","Yumuşak içim, aromatik lezzetler"],
+    ["Espresso Barista Blend","Yüksek gövde, yüksek performans"],
+    ["Espresso Decaf","Kafeinsiz"],
+    ["Filtre Kahve Classic Blend","Orta gövde, orta asidite, dengeli içim"],
+    ["Filtre Kahve Decaf","Kafeinsiz"],
+    ["Colombia Supremo","Kolombiya Supremo kalitesinde, orta kavrum"]]},
+  {id:"turk", ad:"Tek köken ve Türk kahvesi", paket:"250 g ve 1 kg", urunler:[
+    ["Brasil Natural","Brezilya Mogiana bölgesi, orta kavrum"],
+    ["Nicaragua SHG FEP Extrafina","Nikaragua Matagalpa bölgesi, orta kavrum"],
+    ["Guatemala SHG","Guatemala Opalaca bölgesi, orta kavrum"],
+    ["Türk Kahvesi Geleneksel","Brezilya Minas, açık kavrum, bol köpük"],
+    ["Çifte Kavrulmuş Türk Kahvesi","Brezilya Minas, koyu kavrum"],
+    ["Damla Sakızlı Türk Kahvesi","Açık kavrum, damla sakızı aromalı"]]},
+  {id:"nitelikli", ad:"Nitelikli kahveler", paket:"250 g ve 1 kg", urunler:[
+    ["Brasil Doce Diamantina","Espresso. Sütlü çikolata, tatlı ve yumuşak"],
+    ["Brasil Mariano Yellow Bourbon","Espresso. Badem ve bal, dengeli içim"],
+    ["Filtre Premium Blend","Kuru üzüm, sütlü çikolata"],
+    ["Ethiopia Bochesa G1","Şeftali, narenciye, çiçeksi"],
+    ["Ethiopia Yirgacheffe G2","Kurutulmuş meyve, narenciye"],
+    ["El Salvador Merengue","Yeşil elma, turunçgil, kremsi gövde"],
+    ["Peru Papagayo G1","Greyfurt, pekan cevizi, uzun bitiş"],
+    ["Colombia La Parada Geisha","Anaerobik. Karpuz, kan portakalı, ham kakao"],
+    ["Costa Rica La Pastora","Tarrazú SHB. Kırmızı üzüm, kuşburnu, kakao"],
+    ["Tanzanya AA Mount Rungwe","Bitter çikolata, esmer şeker, greyfurt"],
+    ["Kenya AA","Limon, misket limonu, mango"],
+    ["Meksika Esmeralda","Kakao, yüksek gövde, düşük asidite"],
+    ["Decaf Meksika MWP","Kafeinsiz. Elma, kahverengi şeker, badem"],
+    ["Türk Kahvesi Nitelikli","Şeftali tatlılığı, çiçeksi"]]},
+  {id:"toz", ad:"Toz ürünler ve çaylar", paket:"100 g", kucuk:true, urunler:[
+    ["Sıcak Çikolata","Toz ürün"],["Beyaz Sıcak Çikolata","Toz ürün"],["Salep","Toz ürün"],["Chai Tea Latte","Toz ürün"],
+    ["Earl Grey","Çay"],["Yeşil Çay","Çay"],["Yaseminli Yeşil Çay","Çay"],["Papatya Çayı","Bitki çayı"],
+    ["Winter Tea","Çay"],["Red Forest","Meyve çayı"],["Ada Çayı","Bitki çayı"],["Ihlamur","Bitki çayı"],
+    ["Apple Cinnamon","Meyve çayı"],["Kuşburnu Çayı","Meyve çayı"]]}
+];
+
+
+/* hologram vitrin */
+const azHareket = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const sahne = document.getElementById("sahne"), halka = document.getElementById("halka"), isik = document.getElementById("isik");
+const sekmeler = document.querySelector(".sekmeler");
+const bAd = document.getElementById("b-ad"), bNot = document.getElementById("b-not"), bSayac = document.getElementById("b-sayac");
+let g = 0, adim = 0, n = 0, aci = 0, yaricap = 0, zamanlayici = null, durdu = false, yazTimer = null, turSay = 0;
+
+GRUPLAR.forEach((gr, i) => {
+  const b = document.createElement("button");
+  b.type = "button"; b.role = "tab"; b.textContent = gr.ad;
+  b.setAttribute("aria-selected", i === 0);
+  b.addEventListener("click", () => { grupSec(i); yenidenBaslat(); });
+  sekmeler.appendChild(b);
+});
+
+const TR = /^(Filtre|Kahve|Kahvesi|Türk|Geleneksel|Çifte|Kavrulmuş|Damla|Sakızlı|Nitelikli|Sıcak|Çikolata|Beyaz|Salep|Yeşil|Çay|Çayı|Yaseminli|Papatya|Ada|Ihlamur|Kuşburnu|Meksika|Tanzanya)$/;
+const buyuk = t => t.split(" ").map(w => TR.test(w) ? w.toLocaleUpperCase("tr") : w.toLocaleUpperCase("en")).join(" ");
+function etiketMetni(ad){
+  return buyuk(ad).replace(/ (BLEND|DECAF|KAHVESİ|SHG.*|G[12]|AA.*|SUPREMO|NATURAL)$/, m => "<br>" + m.trim());
+  return ad.replace(/ (Blend|Decaf|Kahvesi|SHG.*|G[12]|AA.*|Supremo|Natural)$/, m => "<br>" + m.trim());
+}
+
+function grupSec(i){
+  g = i; adim = 0; turSay = 0;
+  [...sekmeler.children].forEach((b, k) => b.setAttribute("aria-selected", k === i));
+  const gr = GRUPLAR[i]; n = gr.urunler.length;
+  aci = 360 / n;
+  halka.style.transition = "none";
+  halka.innerHTML = gr.urunler.map(([ad], k) => `
+    <div class="oge g-${gr.id}" data-k="${k}">
+      <div class="paket${gr.kucuk ? " kucuk" : ""}" style="transform:rotateY(${-k * aci}deg)"><span class="valf"></span>
+        <div class="etiket">${etiketMetni(ad)}<small>${gr.paket}</small></div><span class="tarama"></span></div>
+    </div>`).join("");
+  const bw = halka.querySelector(".paket").offsetWidth || 100;
+  yaricap = Math.max(bw * 2.3, (n * (bw + 26)) / (2 * Math.PI));
+  halka.querySelectorAll(".oge").forEach((o, k) => {
+    o.style.transform = `rotateY(${k * aci}deg) translateZ(${yaricap}px)`;
+    o.addEventListener("click", () => { git(+o.dataset.k); yenidenBaslat(); });
+  });
+  ciz(true);
+  requestAnimationFrame(() => requestAnimationFrame(() => { halka.style.transition = ""; }));
+}
+
+function ciz(ilk){
+  halka.style.transform = `translateZ(${-yaricap}px) rotateY(${-adim * aci}deg)`;
+  const secili = ((adim % n) + n) % n;
+  halka.querySelectorAll(".oge").forEach((o, k) => {
+    let d = Math.abs(((k - secili) % n + n) % n); d = Math.min(d, n - d) * aci;
+    const p = o.firstElementChild;
+    p.style.filter = `brightness(${(1 - Math.min(d, 180) / 180 * .72).toFixed(2)})`;
+    p.style.opacity = d > 110 ? .55 : 1;
+    o.classList.toggle("secili", k === secili);
+    o.firstElementChild.style.transform = `rotateY(${adim * aci - k * aci}deg)` + (k === secili ? " scale(1.12)" : "");
+  });
+  const gr = GRUPLAR[g], [ad, not] = gr.urunler[secili];
+  const tarama = halka.querySelector(".oge.secili .tarama");
+  if (tarama && !azHareket){ tarama.classList.remove("calis"); void tarama.offsetWidth; tarama.classList.add("calis"); }
+  if (!azHareket){ isik.classList.remove("titre"); void isik.offsetWidth; isik.classList.add("titre"); }
+  yaz(ad);
+  bNot.textContent = not;
+  bSayac.textContent = `${gr.ad}, ${secili + 1} / ${n}`;
+}
+
+function yaz(metin){
+  clearInterval(yazTimer);
+  if (azHareket){ bAd.textContent = metin; return; }
+  let i = 0;
+  bAd.innerHTML = '<span class="imlec"></span>';
+  yazTimer = setInterval(() => {
+    i++;
+    bAd.innerHTML = metin.slice(0, i) + (i < metin.length ? '<span class="imlec"></span>' : "");
+    if (i >= metin.length) clearInterval(yazTimer);
+  }, 32);
+}
+
+function git(k){
+  const secili = ((adim % n) + n) % n;
+  let fark = k - secili;
+  if (fark > n / 2) fark -= n; if (fark < -n / 2) fark += n;
+  adim += fark; ciz();
+}
+function ileri(){
+  turSay++;
+  if (turSay >= Math.min(n, 7)) { grupSec((g + 1) % GRUPLAR.length); return; }
+  adim++; ciz();
+}
+function yenidenBaslat(){
+  clearInterval(zamanlayici);
+  if (!azHareket && !durdu) zamanlayici = setInterval(ileri, 2900);
+}
+document.getElementById("ileri").addEventListener("click", () => { adim++; ciz(); yenidenBaslat(); });
+document.getElementById("geri").addEventListener("click", () => { adim--; ciz(); yenidenBaslat(); });
+const vitrin = document.querySelector(".vitrin");
+vitrin.addEventListener("mouseenter", () => { durdu = true; clearInterval(zamanlayici); });
+vitrin.addEventListener("mouseleave", () => { durdu = false; yenidenBaslat(); });
+vitrin.addEventListener("focusin", () => { durdu = true; clearInterval(zamanlayici); });
+vitrin.addEventListener("focusout", () => { durdu = false; yenidenBaslat(); });
+document.addEventListener("visibilitychange", () => document.hidden ? clearInterval(zamanlayici) : yenidenBaslat());
+let dokunX = null;
+sahne.addEventListener("touchstart", e => { dokunX = e.touches[0].clientX; }, {passive:true});
+sahne.addEventListener("touchend", e => {
+  if (dokunX === null) return;
+  const dx = e.changedTouches[0].clientX - dokunX;
+  if (Math.abs(dx) > 40){ adim += dx < 0 ? 1 : -1; ciz(); yenidenBaslat(); }
+  dokunX = null;
+});
+let boyutT; addEventListener("resize", () => { clearTimeout(boyutT); boyutT = setTimeout(() => { const a = adim; grupSec(g); adim = a; ciz(); }, 200); });
+
+grupSec(0);
+yenidenBaslat();
+</script>
+</body>
+</html>
